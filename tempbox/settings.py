@@ -45,8 +45,12 @@ INSTALLED_APPS += [
 # Third party frameworks
 
 INSTALLED_APPS += [
-    'rest_framework'
+    'rest_framework',
+    'drf_yasg',
 ]
+
+# Configure drf-yasg
+USE_SESSION_AUTH = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -126,3 +130,13 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'basic': {
+            'type': 'basic'
+        }
+    },
+    'LOGIN_URL': '/api-auth/login/',
+    'LOGOUT_URL': '/api-auth/logout/'
+}

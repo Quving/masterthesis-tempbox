@@ -8,4 +8,4 @@ urlpatterns = [
     path('measurements/<int:pk>', views.MeasurementDetail.as_view()),
 ]
 
-urlpatterns = format_suffix_patterns(urlpatterns)
+# urlpatterns = format_suffix_patterns(urlpatterns)
