@@ -1,0 +1,37 @@
+---
+kind: pipeline
+type: docker
+name: api
+steps:
+- name: publish api
+  image: plugins/docker
+  settings:
+    context: .
+    repo:
+      from_secret: docker_repository
+    tags:
+      - ${DRONE_BRANCH}
+    dockerfile: Dockerfile
+    username:
+      from_secret: docker_username
+    password:
+      from_secret: docker_password
+  when:
+    status: [ success ]
+    branch: [ master ]
+
+      # - name: deploy api
+      #   image: quving/drone-rancher-cicd:latest
+      #   settings:
+      #     stamp: ${DRONE_COMMIT}
+      #     kubernetes_deployment: tempbox-api
+      #     kubernetes_namespace: penguin
+      #     rancher_url:
+      #       from_secret: rancher_url
+      #     rancher_token:
+      #       from_secret: rancher_token
+      #     rancher_context:
+      #       from_secret: rancher_context
+      #   when:
+      #     status: [ success ]
+      #     branch: [ master ]
