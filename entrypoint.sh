@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # For sqlite db and cron.logs (later)
 mkdir -p /app
 python manage.py migrate
