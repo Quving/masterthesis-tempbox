@@ -9,12 +9,10 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-import os
-from pathlib import Path
-
 # Fix some static mimetype bugs during production (DEBUG = False)
-import mimetypes
-mimetypes.add_type("text/css", ".css", True)
+import os
+from datetime import timedelta
+from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -26,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-cxzdz8^a5r@s=i47fwgpbbm)crexm&6o2i!y2c-ol^n5dv)o^9'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.getenv("TEMPBOX_DEBUG", False)
 
 ALLOWED_HOSTS = ['*']
 
@@ -51,8 +49,16 @@ INSTALLED_APPS += [
 INSTALLED_APPS += [
     'rest_framework',
     'drf_yasg',
+    'rest_framework_simplejwt',
+
 ]
 
+# Configure rest_framework
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
 # Configure drf-yasg
 USE_SESSION_AUTH = True
 
@@ -86,6 +92,12 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'tempbox.wsgi.application'
 
+# Configure simple-jwt
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=3),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+}
+
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
@@ -114,7 +126,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 # Configuration via envs
-DEBUG = os.getenv("TEMPBOX_DEBUG", False)
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
