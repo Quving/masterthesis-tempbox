@@ -14,3 +14,6 @@ class Measurement(models.Model):
     city = models.CharField(max_length=64)
     street = models.CharField(max_length=64)
     altitude = models.IntegerField()
+
+    class Meta:
+        unique_together = ('measurement_id', 'timestamp',)
