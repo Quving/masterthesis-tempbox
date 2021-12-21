@@ -4,7 +4,7 @@
 In the scope of my masterthesis which examine urban-heat-islands of Hamburg, Germany, I collect temperature data using different source (see Sources). The data, where each object is a measurement has the following data-structure:
 ```
 {
-    measurement_id:	string
+    station_id:	string
     lat:	number
     lng:	number
     source:	string
@@ -75,7 +75,7 @@ Sample Response:
   "results": [
     {
       "id": 1,
-      "measurement_id": "70:ee:50:03:da:4c",
+      "station_id": "70:ee:50:03:da:4c",
       "lat": 53.523671999723,
       "lng": 10.1670769999999,
       "source": "netatmo",
@@ -89,7 +89,7 @@ Sample Response:
     },
     {
       "id": 2,
-      "measurement_id": "70:ee:50:58:6c:b6",
+      "station_id": "70:ee:50:58:6c:b6",
       "lat": 53.5024223327637,
       "lng": 10.1748380661011,
       "source": "netatmo"
@@ -97,7 +97,6 @@ Sample Response:
 
     }
    ]
-  }
 }
 ```
 

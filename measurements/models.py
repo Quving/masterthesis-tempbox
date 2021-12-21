@@ -3,7 +3,7 @@ from django.db import models
 
 # Create your models here.
 class Measurement(models.Model):
-    measurement_id = models.CharField(max_length=32)
+    station_id = models.CharField(max_length=32)
     lat = models.FloatField()
     lng = models.FloatField()
     source = models.CharField(max_length=64)
@@ -16,4 +16,4 @@ class Measurement(models.Model):
     altitude = models.IntegerField()
 
     class Meta:
-        unique_together = ('measurement_id', 'timestamp',)
+        unique_together = ('station_id', 'timestamp',)
