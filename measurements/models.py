@@ -6,6 +6,7 @@ class Measurement(models.Model):
     measurement_id = models.CharField(max_length=32)
     lat = models.FloatField()
     lng = models.FloatField()
+    source = models.CharField(max_length=64)
     timezone = models.CharField(max_length=64)
     timestamp = models.BigIntegerField()
     temperature = models.IntegerField()

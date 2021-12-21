@@ -8,6 +8,7 @@ class MeasurementSerializer(serializers.Serializer):
     measurement_id = serializers.CharField(max_length=32)
     lat = serializers.FloatField()
     lng = serializers.FloatField()
+    source = serializers.CharField(max_length=64)
     timezone = serializers.CharField(max_length=64)
     timestamp = serializers.IntegerField()
     temperature = serializers.IntegerField()
