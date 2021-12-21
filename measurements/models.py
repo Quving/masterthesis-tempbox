@@ -9,7 +9,7 @@ class Measurement(models.Model):
     source = models.CharField(max_length=64)
     timezone = models.CharField(max_length=64)
     timestamp = models.BigIntegerField()
-    temperature = models.IntegerField()
+    temperature = models.FloatField()
     country = models.CharField(max_length=64)
     city = models.CharField(max_length=64)
     street = models.CharField(max_length=64)

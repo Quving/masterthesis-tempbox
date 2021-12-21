@@ -11,7 +11,7 @@ class MeasurementSerializer(serializers.Serializer):
     source = serializers.CharField(max_length=64)
     timezone = serializers.CharField(max_length=64)
     timestamp = serializers.IntegerField()
-    temperature = serializers.IntegerField()
+    temperature = serializers.FloatField()
     country = serializers.CharField(max_length=64)
     city = serializers.CharField(max_length=64)
     street = serializers.CharField(max_length=64)
