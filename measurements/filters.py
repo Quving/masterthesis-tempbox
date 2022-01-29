@@ -20,6 +20,8 @@ class MeasurementFilter(filters.FilterSet):
             'lat',
             'lng',
             'altitude',
-            'min_timestamp', 'max_timestamp',
-            'min_temperature', 'max_temperature',
+            'min_timestamp',
+            'max_timestamp',
+            'min_temperature',
+            'max_temperature',
         ]
