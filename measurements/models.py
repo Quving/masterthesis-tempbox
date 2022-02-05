@@ -12,7 +12,7 @@ class Measurement(models.Model):
     temperature = models.FloatField()
     country = models.CharField(max_length=64)
     city = models.CharField(max_length=64)
-    street = models.CharField(max_length=64)
+    street = models.CharField(max_length=64, blank=True)
     altitude = models.IntegerField()
 
     class Meta:
